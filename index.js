@@ -5,11 +5,11 @@ const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
 const addToHTML = require("./src/generateHTML");
 const generateHTML = require("./src/generateHTML");
-const generateCss = require("./src/generateCSS");
+const generateCSS = require("./src/generateCSS");
 const inquirer = require("inquirer");
 const fs = require("fs");
 
-// Variables
+// Global Variables
 let employees = "";
 
 // Starts the program with an inquirer prompt
@@ -53,7 +53,7 @@ function init() {
     // Adding html to the employees string
     employees += addToHTML(managerObj);
     // Adds a new role if user selected engineer or intern
-    addRole(response.addRole);
+    return addRole(response.addRole);
   });
 }
 
@@ -102,6 +102,7 @@ function addRole(response) {
         return addRole(resp.addRole);
       } // Generates page if user finishes building team
       else if (resp.addRole === "Finish building team") {
+        
         return generateHTML(employees);
       }
     })
@@ -152,8 +153,9 @@ function addRole(response) {
         return generateHTML(employees);
       }
     })
-  } else {
-    return;
+    // Generates page if user finishes building team
+  } else if (response.addRole === "Finish building team") {
+    return generateHTML(employees);
   }
 }
 

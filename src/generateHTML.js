@@ -4,36 +4,48 @@ const Intern = require("../lib/intern.js");
 const Engineer = require("../lib/engineer.js");
 
 function addToHTML(employee) {
-  console.log("ADD TO HTML");
-  let employeeText;
 if (employee instanceof Manager) {
-  employeeText = `
-  <ul>
-    <li>${employee.name}</li>
-    <li>${employee.id}</li>
-    <li>${employee.email}</li>
-    <li>${employee.officeNumber}</li>
-  </ul>`;
+  return `
+  <div class="card">
+    <div class="card-header">
+      <h2 class="name">${employee.name}</h2>
+      <h3 class="role">${Manager.getRole()}</h3>
+    </div>
+    <ul>
+      <li class="list-item">${employee.id}</li>
+      <li class="list-item">${employee.email}</li>
+      <li class="list-item">${employee.officeNumber}</li>
+    </ul>
+  </div>`;
   } 
 else if (employee instanceof Engineer) {
-  employeeText = `
-  <ul>
-    <li>${employee.name}</li>
-    <li>${employee.id}</li>
-    <li>${employee.email}</li>
-    <li>${employee.github}</li>
-  </ul>`;
+  return `
+  <div class="card">
+    <div class="card-header">
+      <h2 class="name">${employee.name}</h2>
+      <h3 class="role">${Engineer.getRole()}</h3>
+    </div>
+    <ul>
+      <li class="list-item">${employee.id}</li>
+      <li class="list-item">${employee.email}</li>
+      <li class="list-item">${employee.officeNumber}</li>
+    </ul>
+  </div>`;
 }
 else if (employee instanceof Intern) {
-  employeeText = `
-  <ul>
-    <li>${employee.name}</li>
-    <li>${employee.id}</li>
-    <li>${employee.email}</li>
-    <li>${employee.officeNumber}</li>
-  </ul>`;
+  return `
+  <div class="card">
+    <div class="card-header">
+      <h2 class="name">${employee.name}</h2>
+      <h3 class="role">${Intern.getRole()}</h3>
+    </div>
+    <ul>
+      <li class="list-item">${employee.id}</li>
+      <li class="list-item">${employee.email}</li>
+      <li class="list-item">${employee.officeNumber}</li>
+    </ul>
+  </div>`;
 }
-return employeeText;
 }
 
 function generateHTML(html) {
@@ -49,7 +61,7 @@ function generateHTML(html) {
   <title>Team Page</title>
 </head>
 <body>
-${JSON.stringify(html)}
+${html}
 </body>
 </html>`, (err) => {
   if (err) {
