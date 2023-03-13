@@ -1,7 +1,8 @@
 const fs = require("fs");
 
+// Generates the premade css file
 function generateCSS() {
-  process.chdir("./dist");
+  process.chdir("./dist/assets/css");
   fs.writeFile("style.css", `
   html, body {
     height: 100%;
