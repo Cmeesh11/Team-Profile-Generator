@@ -44,7 +44,7 @@ else if (employee instanceof Intern) {
     <ul>
       <li class="list-item">Employee ID: ${employee.getId()}</li>
       <li class="list-item">Email: <a href="mailto:${employee.getEmail()}">${employee.getEmail()}</a></li>
-      <li class="list-item">School: ${employee.getSchool}</li>
+      <li class="list-item">School: ${employee.getSchool()}</li>
     </ul>
   </div>`;
 }
