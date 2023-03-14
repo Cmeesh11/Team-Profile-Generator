@@ -3,7 +3,7 @@ const { join } = require('path');
 
 // Generates the premade css file
 function generateCSS() {
-  fs.writeFile(join(__dirname, "..", "dist", "style.css"), `
+  fs.writeFile(join(__dirname, "..", "dist", "assets", "css", "style.css"), `
   html, body {
     height: 100%;
     margin: 0;
