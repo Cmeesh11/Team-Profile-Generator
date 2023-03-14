@@ -2,12 +2,12 @@ const fs = require("fs");
 const Manager = require("../lib/manager.js");
 const Intern = require("../lib/intern.js");
 const Engineer = require("../lib/engineer.js");
-const { join } = require('path');
+const { join } = require("path");
 
 // Returns an HTML snippet of the employee object that is passed in
 function addToHTML(employee) {
-if (employee instanceof Manager) {
-  return `
+  if (employee instanceof Manager) {
+    return `
   <div class="card">
     <div class="card-header">
       <h2 class="name">${employee.getName()}</h2>
@@ -19,9 +19,8 @@ if (employee instanceof Manager) {
       <li class="list-item">Office Number: ${employee.getOffice()}</li>
     </ul>
   </div>`;
-  } 
-else if (employee instanceof Engineer) {
-  return `
+  } else if (employee instanceof Engineer) {
+    return `
   <div class="card">
     <div class="card-header">
       <h2 class="name">${employee.getName()}</h2>
@@ -33,9 +32,8 @@ else if (employee instanceof Engineer) {
       <li class="list-item">Github link: <a href="https://github.com/${employee.getGithub()}">${employee.getGithub()}</a></li>
     </ul>
   </div>`;
-}
-else if (employee instanceof Intern) {
-  return `
+  } else if (employee instanceof Intern) {
+    return `
   <div class="card">
     <div class="card-header">
       <h2 class="name">${employee.getName()}</h2>
@@ -47,12 +45,14 @@ else if (employee instanceof Intern) {
       <li class="list-item">School: ${employee.getSchool()}</li>
     </ul>
   </div>`;
-}
+  }
 }
 
 // Generates the html page with the html code that is passed in
 function generateHTML(html) {
-  fs.writeFile(join(__dirname, "..", "dist", "index.html"), `
+  fs.writeFile(
+    join(__dirname, "..", "dist", "index.html"),
+    `
   <!DOCTYPE html>
   <html lang="en">
   <head>
@@ -70,7 +70,9 @@ function generateHTML(html) {
       </div>
     </div>
   </body>
-  </html>`, (err) => err ? console.log(err) : console.log("Generated HTML"));
+  </html>`,
+    (err) => (err ? console.log(err) : console.log("Generated HTML"))
+  );
 }
 
 module.exports = { generateHTML, addToHTML };

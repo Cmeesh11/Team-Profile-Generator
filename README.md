@@ -9,3 +9,6 @@ Companies that need to visually see information about their employees will find 
 
 This requires node.js to be run. Enter "node index.js" in the root directory of the repository to be prompted with a series of questions. The "index.html" and the "style.css" files should be generated in the "dist" directory.
 
+### Walkthrough video
+
+https://drive.google.com/file/d/14yqqmA8OfSNVh0WLsb9hEm5LFrGEqXD5/view

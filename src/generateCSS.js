@@ -1,9 +1,11 @@
 const fs = require("fs");
-const { join } = require('path');
+const { join } = require("path");
 
 // Generates the premade css file
 function generateCSS() {
-  fs.writeFile(join(__dirname, "..", "dist", "assets", "css", "style.css"), `
+  fs.writeFile(
+    join(__dirname, "..", "dist", "assets", "css", "style.css"),
+    `
   html, body {
     height: 100%;
     margin: 0;
@@ -82,7 +84,9 @@ function generateCSS() {
       grid-template-columns: 1fr;
     }
   }
-  `, (err) => err ? console.log(err) : console.log("Created CSS"))
+  `,
+    (err) => (err ? console.log(err) : console.log("Created CSS"))
+  );
 }
 
 module.exports = generateCSS;
