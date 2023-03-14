@@ -3,8 +3,7 @@ const Employee = require("./lib/employee.js");
 const Manager = require("./lib/manager.js");
 const Engineer = require("./lib/engineer.js");
 const Intern = require("./lib/intern.js");
-const addToHTML = require("./src/generateHTML");
-const generateHTML = require("./src/generateHTML");
+const { generateHTML, addToHTML } = require("./src/generateHTML");
 const generateCSS = require("./src/generateCSS");
 const inquirer = require("inquirer");
 const fs = require("fs");
@@ -53,7 +52,7 @@ function init() {
       // Creating new manager object
       let managerObj = new Manager(name, id, email, officeNumber);
       // Adding html to the employees string
-      employees += " " + addToHTML(managerObj);
+      employees += addToHTML(managerObj);
       // Adds a new role if user selected engineer or intern
       return addRole(response.addRole);
     });
@@ -167,7 +166,7 @@ function addRole(response) {
         }
       });
     // Generates page if user finishes building team
-  } else if (response.addRole === "Finish building team") {
+  } else if (response === "Finish building team") {
     generateCSS();
     return generateHTML(employees);
   }
